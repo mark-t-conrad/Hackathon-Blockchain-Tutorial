@@ -8,17 +8,20 @@ contract Lottery{
   
   constructor() Lottery() public {
   
-    manager = msg.sender; }
+    manager = msg.sender; 
+    }
     
   function enter() public payable {
   
     require(msg.value >= 1 ether);
     
-    players.push(msg.sender); }
+    players.push(msg.sender); 
+    }
     
   function random() private view returns (uint) {
   
-    return uint(keccak256(block.difficulty, now, players)); }
+    return uint(keccak256(block.difficulty, now, players));
+    }
     
   function pickWinner() public {
   
@@ -28,5 +31,6 @@ contract Lottery{
     
     players[index].transfer(this.balance);
     
-    players = new address[](0); }
+    players = new address[](0); 
+    }
 }
